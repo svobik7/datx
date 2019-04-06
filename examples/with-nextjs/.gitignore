@@ -1,0 +1,31 @@
+# MacOS files
+.DS_Store
+
+# generally ignored file types
+*~
+*.swp
+*.log
+
+# IDE
+.vscode/
+
+# NODE
+node_modules/
+
+# ENV
+.build/
+.coverage
+.env
+.next
+compiled/
+production-server/
+
+# TEMP
+tmp/
+
+# NOW 
+now.json
+now.*.json
+
+# JEST
+coverage

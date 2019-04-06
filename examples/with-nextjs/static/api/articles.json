@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "articles",
+      "attributes": {
+        "duration": 5,
+        "published_at": 1554487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 21,
+            "type": "articles_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "articles",
+      "attributes": {
+        "duration": 15,
+        "published_at": 1454487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 22,
+            "type": "articles_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "articles",
+      "attributes": {
+        "duration": 45,
+        "published_at": 1954487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 23,
+            "type": "articles_langs"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": 21,
+      "type": "articles_langs",
+      "attributes": {
+        "title": "#A1 Nullam justo enim, consectetuer nec",
+        "perex": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Etiam bibendum elit eget erat. Etiam neque"
+      }
+    },
+    {
+      "id": 22,
+      "type": "articles_langs",
+      "attributes": {
+        "title": "#A2 Curabitur bibendum justo non orci",
+        "perex": "Duis viverra diam non justo. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam",
+        "content": "Duis viverra diam non justo. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Donec iaculis gravida nulla. Maecenas lorem. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus."
+      }
+    },
+    {
+      "id": 23,
+      "type": "articles_langs",
+      "attributes": {
+        "title": "#A3 Bibendum curabitur justo non orci",
+        "perex": "Viverra duis diam non justo. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam",
+        "content": "Duis ante duis viverra diam non justo. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Donec iaculis gravida nulla. Maecenas lorem. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus."
+      }
+    }
+  ]
+}
