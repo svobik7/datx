@@ -1,0 +1,243 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "news",
+      "attributes": {
+        "position": 10
+      },
+      "relationships": {
+        "related": {
+          "data": {
+            "id": 1,
+            "type": "articles"
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "news",
+      "attributes": {
+        "position": 4
+      },
+      "relationships": {
+        "related": {
+          "data": {
+            "id": 1,
+            "type": "services"
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "news",
+      "attributes": {
+        "position": 8
+      },
+      "relationships": {
+        "related": {
+          "data": {
+            "id": 2,
+            "type": "articles"
+          }
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "news",
+      "attributes": {
+        "position": 6
+      },
+      "relationships": {
+        "related": {
+          "data": {
+            "id": 2,
+            "type": "services"
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "news",
+      "attributes": {
+        "position": 2
+      },
+      "relationships": {
+        "related": {
+          "data": {
+            "id": 3,
+            "type": "articles"
+          }
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "news",
+      "attributes": {
+        "position": 1
+      },
+      "relationships": {
+        "related": {
+          "data": {
+            "id": 3,
+            "type": "services"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": 1,
+      "type": "articles",
+      "attributes": {
+        "duration": 5,
+        "published_at": 1554487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 21,
+            "type": "articles_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "articles",
+      "attributes": {
+        "duration": 15,
+        "published_at": 1454487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 22,
+            "type": "articles_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "articles",
+      "attributes": {
+        "duration": 45,
+        "published_at": 1954487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 23,
+            "type": "articles_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 1,
+      "type": "services",
+      "attributes": {
+        "link": "http://www.dummylink.org",
+        "published_at": 1554487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 21,
+            "type": "services_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "services",
+      "attributes": {
+        "link": "http://www.dummylink.org",
+        "published_at": 1454487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 22,
+            "type": "services_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "services",
+      "attributes": {
+        "link": "http://www.dummylink.org",
+        "published_at": 1454487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 23,
+            "type": "services_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "articles_langs",
+      "attributes": {
+        "title": "#A1 Nullam justo enim, consectetuer nec",
+        "perex": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        "content": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Etiam bibendum elit eget erat. Etiam neque"
+      }
+    },
+    {
+      "id": 22,
+      "type": "articles_langs",
+      "attributes": {
+        "title": "#A2 Curabitur bibendum justo non orci",
+        "perex": "Duis viverra diam non justo. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam",
+        "content": "Duis viverra diam non justo. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Donec iaculis gravida nulla. Maecenas lorem. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus."
+      }
+    },
+    {
+      "id": 23,
+      "type": "articles_langs",
+      "attributes": {
+        "title": "#A3 Bibendum curabitur justo non orci",
+        "perex": "Viverra duis diam non justo. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam",
+        "content": "Duis ante duis viverra diam non justo. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Donec iaculis gravida nulla. Maecenas lorem. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus."
+      }
+    },
+    {
+      "id": 21,
+      "type": "services_langs",
+      "attributes": {
+        "title": "#S1 Cras pede libero, dapibus nec, pretium sit amet",
+        "perex": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat"
+      }
+    },
+    {
+      "id": 22,
+      "type": "services_langs",
+      "attributes": {
+        "title": "#S2 Sed ac dolor sit amet purus malesuada congue",
+        "perex": "Proin mattis lacinia justo. Mauris tincidunt sem sed arcu. Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Etiam commodo dui eget wisi"
+      }
+    },
+    {
+      "id": 23,
+      "type": "services_langs",
+      "attributes": {
+        "title": "#S3 Dolor sed ac sit amet purus malesuada congue",
+        "perex": "Lacinia proin mattis justo. Mauris tincidunt sem sed arcu. Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Etiam commodo dui eget wisi"
+      }
+    }
+  ]
+}

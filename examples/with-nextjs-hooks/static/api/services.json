@@ -1,0 +1,78 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "type": "services",
+      "attributes": {
+        "link": "http://www.dummylink.org",
+        "published_at": 1554487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 21,
+            "type": "services_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "services",
+      "attributes": {
+        "link": "http://www.dummylink.org",
+        "published_at": 1454487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 22,
+            "type": "services_langs"
+          }
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "services",
+      "attributes": {
+        "link": "http://www.dummylink.org",
+        "published_at": 1454487764
+      },
+      "relationships": {
+        "language": {
+          "data": {
+            "id": 23,
+            "type": "services_langs"
+          }
+        }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": 21,
+      "type": "services_langs",
+      "attributes": {
+        "title": "#S1 Cras pede libero, dapibus nec, pretium sit amet",
+        "perex": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat"
+      }
+    },
+    {
+      "id": 22,
+      "type": "services_langs",
+      "attributes": {
+        "title": "#S2 Sed ac dolor sit amet purus malesuada congue",
+        "perex": "Proin mattis lacinia justo. Mauris tincidunt sem sed arcu. Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Etiam commodo dui eget wisi"
+      }
+    },
+    {
+      "id": 23,
+      "type": "services_langs",
+      "attributes": {
+        "title": "#S3 Dolor sed ac sit amet purus malesuada congue",
+        "perex": "Lacinia proin mattis justo. Mauris tincidunt sem sed arcu. Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Etiam commodo dui eget wisi"
+      }
+    }
+  ]
+}
