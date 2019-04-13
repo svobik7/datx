@@ -4,6 +4,7 @@ import { RemoteModel } from 'models/RemoteModel';
 import { Context, useContext, useEffect, useState } from 'react';
 import {
   IStoreRemoteDataCollection,
+  IStoreRemoteDataView,
   StoreRemoteDataView
 } from 'stores/storeRemoteData';
 
@@ -21,11 +22,11 @@ export type RemoteDataOptions = {
  * - creates remote data view bound with store collection
  * - caches remote data view
  */
-const useRemoteData = (
+const useRemoteData = <T extends RemoteModel>(
   context: Context<IStoreRemoteDataCollection>,
-  modelType: IModelConstructor<RemoteModel>,
+  modelType: IModelConstructor<T>,
   options: RemoteDataOptions
-): StoreRemoteDataView => {
+): IStoreRemoteDataView<T> => {
   // use context store
   const store = useContext(context);
   // create store view
@@ -40,14 +41,6 @@ const useRemoteData = (
       )
   );
 
-  //
-  useEffect(() => {
-    console.log(store.__viewList);
-    return () => {
-      // view.destroy()
-      // TODO: when component is unmounted the view is no longer in need - should be removed from collection
-    };
-  }, []);
   // return view
   return view;
 };

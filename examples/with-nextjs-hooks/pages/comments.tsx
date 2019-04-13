@@ -21,9 +21,11 @@ class CommentsPage extends Component {
               fetchOnMount: false,
               infinite: false,
               pageSize: 2,
-              filter: {
-                related_id: '12402',
-                related_type: 'poc_helps'
+              request: {
+                filter: {
+                  related_id: '12402',
+                  related_type: 'poc_helps'
+                }
               }
             }}
             render={(data, { fetcher, fetcherStatus }) => {
@@ -52,7 +54,7 @@ class CommentsPage extends Component {
                       {isIdle(fetcherStatus) && (
                         <tr>
                           <td colSpan={2}>
-                            <button onClick={() => fetcher.fetch()}>
+                            <button onClick={() => fetcher.fetch(1)}>
                               FETCH
                             </button>
                           </td>
@@ -68,7 +70,7 @@ class CommentsPage extends Component {
                         <tr>
                           <td colSpan={2}>
                             <p>Something went wrong.</p>
-                            <button onClick={() => fetcher.fetch()}>
+                            <button onClick={() => fetcher.fetchAgain()}>
                               TRY AGAIN
                             </button>
                           </td>

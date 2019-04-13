@@ -1832,25 +1832,25 @@ date-now@^0.1.4:
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
 
-datx-jsonapi@^0.15.11:
-  version "0.15.11"
-  resolved "https://registry.yarnpkg.com/datx-jsonapi/-/datx-jsonapi-0.15.11.tgz#4e7ea41c49da660311f569342776b5165d9a3802"
-  integrity sha512-WfHxZvMQJC2vDqeHve604iCruj83eWzIwI0+wuNBtRUmrrtQ76qPj5w2svXQHLKYahd3vCvfIErefKSqcLPPlg==
+datx-jsonapi@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/datx-jsonapi/-/datx-jsonapi-0.16.0.tgz#e482d3676d3bd7fb277d9febf5e11664fb962c65"
+  integrity sha512-3NnWXbErHrjMioFxs1b0mZ+0/I5hyBVwyBar70YNlmMZMGimiaMFWDHjtQXZXy7qRpCW0TZZLV1qTJdOq/yiGA==
   dependencies:
-    datx "^0.15.11"
-    datx-utils "^0.15.11"
+    datx "^0.16.0"
+    datx-utils "^0.16.0"
 
-datx-utils@^0.15.11:
-  version "0.15.11"
-  resolved "https://registry.yarnpkg.com/datx-utils/-/datx-utils-0.15.11.tgz#b160125883fc9af03a1d6fb61fadac9b0368f13a"
-  integrity sha512-h6xMylJFxEvxaKXRxOieaKfzeLTOk4BZqbJ12Z8/jC/8bUgTOsb5BuPM6xSjxpEtKaj/DTF3ayzVAXBksD7gog==
+datx-utils@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/datx-utils/-/datx-utils-0.16.0.tgz#05cd0f04c267592dc41ada388cddc82aa881119e"
+  integrity sha512-shNz5rzuXb8puUfky9ndZbewzI6FacLurdpnYSZZOdBFqEWRDaXRJK05hGFEa94PNO+U4K7lg9Eu837jzMhvGQ==
 
-datx@^0.15.11:
-  version "0.15.11"
-  resolved "https://registry.yarnpkg.com/datx/-/datx-0.15.11.tgz#f0e430cd8923081ce604d8f34d17baa0be135f2b"
-  integrity sha512-FLzXIF5fzmFkDwFbz7VeQJTyDabFJfcLdyfqKxSJwU7k52x6KCc3ULGWHNQZWs7zmH1TycW1ezFsJyj2/ndFoQ==
+datx@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/datx/-/datx-0.16.0.tgz#03681306dc1b939bad6d073ec21b3b94814066da"
+  integrity sha512-AUrXM+4Ad5JWW7ME1idqYfI281iDgXluNiNh2Jk3acV9Eym5yzAWZQ97jOeykS8SlpAgCa0ouLzVTLnSTrqLvQ==
   dependencies:
-    datx-utils "^0.15.11"
+    datx-utils "^0.16.0"
 
 debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"

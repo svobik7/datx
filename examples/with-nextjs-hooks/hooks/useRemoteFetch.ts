@@ -1,5 +1,4 @@
-import { IJsonapiModel, Response } from 'datx-jsonapi';
-import { IFilters } from 'datx-jsonapi/dist/interfaces/IFilters';
+import { IJsonapiModel, IRequestOptions, Response } from 'datx-jsonapi';
 import _ from 'lodash';
 import { useEffect, useReducer } from 'react';
 import { StoreRemoteDataView } from 'stores/storeRemoteData';
@@ -29,9 +28,10 @@ export type RemoteFetchApi = {
   countTotal: number;
   countPages: number;
   // behaviors
-  fetch: (page?: number) => void;
+  fetch: (page: number) => void;
   fetchNext: () => void;
   fetchPrev: () => void;
+  fetchAgain: () => void;
   // indicators
   hasNext: () => boolean;
   hasPrev: () => boolean;
@@ -45,7 +45,7 @@ export type RemoteFetchOptions = {
   fetchOnMount: boolean;
   infinite: boolean;
   pageSize: number;
-  filter: IFilters;
+  request: IRequestOptions;
 };
 
 /**
@@ -54,6 +54,7 @@ export type RemoteFetchOptions = {
 export type RemoteFetchPage = {
   status: RemoteFetchRequestStatus;
   updatedAt: number;
+  attempts: number;
 };
 
 /**
@@ -143,7 +144,7 @@ const initialOptions: RemoteFetchOptions = {
   fetchOnMount: true,
   infinite: true,
   pageSize: 25,
-  filter: {}
+  request: {}
 };
 
 /**
@@ -180,6 +181,10 @@ const stateReducer: RemoteFetchStateReducer = (state, action) => {
 
   // reduce FETCH BEGIN actions
   if (type === RemoteFetchActionType.FETCH_BEGIN) {
+    // load current page state data
+    const pageData = state.pagination[page] || {};
+    const fetchAttempts = pageData.attempts || 0;
+
     return {
       ...state,
       currentPage: page,
@@ -187,9 +192,10 @@ const stateReducer: RemoteFetchStateReducer = (state, action) => {
       pagination: {
         ...state.pagination,
         [page]: {
-          ...(state.pagination[page] || {}),
+          ...pageData,
           updatedAt: Date.now(),
-          status: RemoteFetchRequestStatus.Fetching
+          status: RemoteFetchRequestStatus.Fetching,
+          attempts: fetchAttempts + 1
         }
       }
     };
@@ -251,36 +257,46 @@ const useRemoteFetch = (
     }
   });
 
+  // load current page data
+  const pageData = state.pagination[state.currentPage];
+
   // invoke remote fetch whenever current page changed
   useEffect(() => {
-    // prevent any action when current page is 0
+    // - prevent any action when page is not greater then 0
     if (state.currentPage < 1) return;
-    // invoke api fetch
+    // - create request pagination params
+    const paginationParams = createPagination(
+      state.currentPage,
+      state.options.pageSize
+    );
+    // - load explicit request params
+    const explicitParams = _.get(state.options, ['request', 'params'], []);
+    // - invoke api fetch
     view
       .fetchAll({
-        params: [
-          ...createPagination(state.currentPage, state.options.pageSize)
-        ],
-        filter: state.options.filter
+        ...state.options.request,
+        params: [...paginationParams, ...explicitParams]
       })
       .then(
         response => onSuccess(state.currentPage, response),
         response => onFail(state.currentPage, response)
-      )
-      .catch(reason => onReject(state.currentPage, reason));
-  }, [state.currentPage]);
+      );
+  }, [state.currentPage, _.get(pageData, 'attempts', 0)]);
 
   // change current page to '1' onMount if is allowed
   useEffect(() => {
-    state.options.fetchOnMount && changePage(1);
+    state.options.fetchOnMount && fetchPage(1);
   }, []);
 
-  // change current page
-  const changePage = (page: number) => {
+  // fetch page
+  const fetchPage = (page: number, force: boolean = false) => {
+    // prevent any action when force is false and current page equals given page
+    if (force === false && page === state.currentPage) return null;
+    // clear view when infinite is not used
     if (!state.options.infinite) {
       view.removeAll();
     }
-
+    // dispatch new fetch action
     dispatch({
       type: RemoteFetchActionType.FETCH_BEGIN,
       payload: {
@@ -314,38 +330,28 @@ const useRemoteFetch = (
     });
   };
 
-  // create fail callback
-  const onReject = (page: number, reason: any) => {
-    dispatch({
-      type: RemoteFetchActionType.FETCH_END,
-      payload: {
-        page,
-        status: RemoteFetchRequestStatus.Failed
-      }
-    });
-  };
-
   // invokes fetching of next page
   const fetchNext = () => {
-    hasNext() && changePage(state.currentPage + 1);
+    hasNext() && fetchPage(state.currentPage + 1);
   };
 
   // invokes fetching of previous page
   const fetchPrev = () => {
-    hasPrev() && changePage(state.currentPage - 1);
+    hasPrev() && fetchPage(state.currentPage - 1);
+  };
+
+  // invokes fetching of current page again
+  const fetchAgain = () => {
+    fetchPage(state.currentPage, true);
   };
 
   // indicates if there is next page ready to fetch or load from cache
   const hasNext = (): boolean => {
-    // if (!state.lastResponse) return false;
-    // return state.lastResponse.next !== undefined;
     return state.countPages > state.currentPage;
   };
 
   // indicates if there is prev pare ready to fetch or load from cache
   const hasPrev = (): boolean => {
-    // if (!state.lastResponse) return false;
-    // return state.lastResponse.prev !== undefined;
     return state.currentPage > 1;
   };
 
@@ -356,9 +362,10 @@ const useRemoteFetch = (
     countTotal: state.countTotal,
     countPages: state.countPages,
     // behaviors
-    fetch: (page: number = state.currentPage) => changePage(page),
+    fetch: (page: number) => fetchPage(Number(page)),
     fetchNext,
     fetchPrev,
+    fetchAgain,
     // indicators
     hasNext,
     hasPrev

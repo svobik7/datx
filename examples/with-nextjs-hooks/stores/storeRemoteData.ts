@@ -1,21 +1,15 @@
 import 'configs/api';
 
-import { Collection, IModelConstructor, IType, View } from 'datx';
-import {
-  IJsonapiCollection,
-  IJsonapiModel,
-  IJsonapiView,
-  IRequestOptions,
-  jsonapi
-} from 'datx-jsonapi';
+import { Collection, View } from 'datx';
+import { IJsonapiCollection, IJsonapiView, jsonapi } from 'datx-jsonapi';
 import _ from 'lodash';
 import { ArticleLanguageModel } from 'models/remote/ArticleLanguageModel';
 import { ArticleModel } from 'models/remote/ArticleModel';
+import { CommentModel } from 'models/remote/CommentModel';
 import { NewsModel } from 'models/remote/NewsModel';
 import { ServiceLanguageModel } from 'models/remote/ServiceLanguageModel';
 import { ServiceModel } from 'models/remote/ServiceModel';
 import { createContext } from 'react';
-import { CommentModel } from 'models/remote/CommentModel';
 
 // export ID of store remote data
 export const STORE_REMOTE_DATA_ID = 'storeRemoteData';
@@ -24,7 +18,7 @@ export const STORE_REMOTE_DATA_ID = 'storeRemoteData';
  * Defines Remote Data View interface following DatX rules
  * @see https://github.com/infinum/datx/wiki/View
  */
-export type IStoreRemoteDataView = View & IJsonapiView;
+export type IStoreRemoteDataView<T> = View<T> & IJsonapiView;
 
 /**
  * Defines Remote Data View base class

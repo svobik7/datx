@@ -60,7 +60,7 @@ class IndexPage extends Component {
                   {isIdle(fetcherStatus) && (
                     <tr>
                       <td colSpan={2}>
-                        <button onClick={() => fetcher.fetch()}>FETCH</button>
+                        <button onClick={() => fetcher.fetch(1)}>FETCH</button>
                       </td>
                     </tr>
                   )}
@@ -74,7 +74,7 @@ class IndexPage extends Component {
                     <tr>
                       <td colSpan={2}>
                         <p>Something went wrong.</p>
-                        <button onClick={() => fetcher.fetch()}>
+                        <button onClick={() => fetcher.fetchAgain()}>
                           TRY AGAIN
                         </button>
                       </td>

@@ -11,8 +11,8 @@
   "dependencies": {
     "@zeit/next-typescript": "^1.1.1",
     "class-validator": "^0.9.1",
-    "datx": "^0.15.11",
-    "datx-jsonapi": "^0.15.11",
+    "datx": "^0.16.0",
+    "datx-jsonapi": "^0.16.0",
     "lodash": "^4.17.11",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
